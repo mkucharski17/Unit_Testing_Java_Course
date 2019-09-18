@@ -3,6 +3,7 @@ package Testing;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,16 +12,20 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(BeforeAfterExtension.class)
 class OrderTest {
 
     private Order order;
 
     @BeforeEach
-    void initializeOrder(){
+    void initializeOrder()
+    {
+        System.out.println("before");
         order = new Order();
     }
     @AfterEach
     void cleanUp(){
+        System.out.println("after");
         order.cancel();
     }
 
